@@ -1,0 +1,106 @@
+g.Selector(element, elementTarget)
+
+This is my most used and favourite function. It is a advanced selector.
+Like the All function, you can select elements by their classname, ID or tag.
+You can also select elements inside a element. Pretty cool huh? I show you more here below.
+Enter a number in the second argument of the function, to select a specific element.
+If you leave it empty, the first element will be selected.
+
+-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+
+EXAMPLE 1:
+
+(html)
+
+<div class="MyElement"></div>
+
+<div id="MyElement"></div>
+
+<span></span>
+
+...
+
+(js)
+
+g.Selector(".MyElement"); // Returns the element with the classname 'MyElement'
+
+g.Selector("#MyElement"); // Returns the element with the ID 'MyElement'
+
+g.Selector("<span>"); // Returns the span element.
+
+
+-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+EXAMPLE 2 (I will only use classnames for this example, this works for ID's and tags as well):
+
+(html)
+
+<div class="MyElement"></div>
+<div class="MyElement"></div>
+
+...
+
+(js)
+
+g.Selector(".MyElement"); // Will returns the first element with the classname 'MyElement'. Default is 0 because a array starts at 0, you should know that :).
+
+g.Selector(".MyElement", 1); // This will returns the second element with the classname 'MyElement'. Keep in mind, zero = 1, one = 2. Yeah, it is confusing but that is how arrays starts!.
+
+
+
+-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+
+EXAMPLE 3 (I will only use ID's for this example, this works also for classnames and tags):
+
+(html)
+
+<div class="MyElement"></div>
+
+... 
+
+(js)
+
+g.Selector(".MyElement").On(event, function); // This will set a event listener on the element.
+
+g.Selector(".MyElement").Css(property, value); // This will style the element.
+
+g.Selector(".MyElement").Width(); // This returns the elements its width.
+
+g.Selector(".MyElement").Height(); // This returns the elements its height.
+
+g.Selector(".MyElement").Class(value); // Enter the argument to ADD a classname, leave it empty to RETURN the classname.
+
+g.Selector(".MyElement").Style(obj); // You can use objects to style the element. 
+
+g.Selector(".MyElement").Click(function); // Enter the argument to ADD a click listener, leave it empty to CLICK the element.
+
+
+-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+EXAMPLE 4:
+
+(html)
+
+<div class='MyParent'>
+	<div class='MyChild'></div>
+</div>
+
+<div id='MyParent'>
+	<div id='MyChild'></div>
+</div>
+
+<span>
+	<p></p>
+</span>
+
+...
+
+(js)
+
+g.Selector(".MyChild in .MyParent"); // This will return the element with the classname 'MyChild', IN the element 'MyParent'.
+
+g.Selector("#MyChild in #MyParent"); // This will return the element with the ID 'MyChild', IN th element with the ID 'MyParent'.
+
+g.Selector("<p> in <span>"); // This will return the paragraph element IN the span element.

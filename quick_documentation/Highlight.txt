@@ -1,0 +1,18 @@
+g.Highlight(element, timeout, duration)
+
+- - - - - - - - - - 
+
+This function will actually highlight elements red, but it is not stable.
+But you could use it anyways
+
+EXAMPLE:
+
+(html)
+
+<div class='MyElement'></div>
+
+...
+
+(js)
+
+g.Highlight(".MyElement", true, 1000); // This will highlight the element for one second

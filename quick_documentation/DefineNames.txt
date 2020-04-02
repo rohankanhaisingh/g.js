@@ -1,0 +1,22 @@
+g.DefineNames(boolean);
+
+- - - - - - - - - - - -
+
+You can define element names as a global variable.
+Use on elements you want to define, the attribute called 'g-name';
+
+EXAMPLE:
+
+(html)
+
+<div g-name='MyName'>
+	Hey look, I am inside a div element!
+</div>
+
+...
+
+(js)
+
+g.DefineNames(true); // So every element with the 'g-name' attribute will be defined.
+
+alert(MyName); // Returns the div element you see above

@@ -1,0 +1,36 @@
+g.All(element)
+
+This is one of my favourite one. It is a all selector.
+You can select multiple elements at once, and control them.
+You can select element with a classname, ID or a tag. Here are some quick examples:
+
+g.All(".MyClass") 
+g.All("#MyId")
+g.All("<div>")
+
+EXAMPLE:
+
+(html)
+
+<div class='MyElement'></div>
+<div class='MyElement'></div>
+<div class='MyElement'></div>
+<div class='MyElement'></div>
+<div class='MyElement'></div>
+<div class='MyElement'></div>
+<div class='MyElement'></div>
+
+...
+
+(js)
+
+g.All(".MyElement"); // This will return a array with all the elements stored.
+
+g.All(".MyElement").Css(property, value); // This will style all the elements with that classname.
+
+g.All(".MyElement").Random(); // Returns a random element out of that array.
+
+g.All(".MyElement").SetAttribute(name, value); // Sets a attribute on every element that is stored in the array.
+
+g.All(".MyElement").RemoveElement(name); // Removes a specific attribute for all the elements that is stored in the array.
+
