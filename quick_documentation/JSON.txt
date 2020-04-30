@@ -1,0 +1,32 @@
+g.JSON(filepath, callback);
+
+- - - - - - - -
+
+This will open a json file and returns the content in the callback function. 
+The function needs two arguments, the filepath (string) and the callback (function).
+When the file has been opened, the callback function will be called with a object called 'response'.
+The object has two properties, parse and string. Parse are parsed content of the file that can be used as a json file.
+String is just the whole content of the file.
+
+-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+EXAMPLE 1:
+
+(js)
+
+g.JSON("my_epic_json_file.json", function() {
+	// Hey, it works!
+
+	console.log(response.parse);
+	console.log(response.string);
+});
+
+g.JSON("not_a_json_file.txt", function() {
+	// This doesnt work because it's not a .json file.
+	// The response object doesn't exist :(
+});
+
+g.JSON("file_that_cannot_be_loaded.json", function() {
+	// The file cannot be loaded and so the response object doesnt exist :(
+	// See the console for more information.
+});

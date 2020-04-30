@@ -1,0 +1,20 @@
+g.XHLoad(filepath, callback)
+
+- - - - - - - - - - 
+
+This is a quick XMLHTTPRequest function. It will request a file and returns it as a object
+into the callback function. This function needs 2 arguments. The first argument has to be a filepath, make sure the path is correct! 
+The second argument has to be a function. This function will be called when the file has been loaded, or has been aborted or a error has been occurred.
+A variable called response, is a object and will automatically be defined in the callback function. The object has 3 properties, text, code and main.
+
+-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+EXAMPLE:
+
+(js)
+
+g.XHLoad("MyEpicTextFile.txt", function() {
+	console.log(response.text); // Returns the content of the file
+	console.log(response.code); // Returns the statuscode of the file.
+	console.log(response.main); // Returns all the data of the file.
+});

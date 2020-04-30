@@ -1,0 +1,48 @@
+g.CreateElement(element, parentElement)
+
+- - - - - - - -
+This will create a element in a easy way!
+2 arguments needed, the element name (string) and the element return (string or object).
+I will explain this really quick!
+
+-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+EXAMPLE: 1
+
+(js)
+
+var myFirstElement = g.CreateElement("div"); // Single div element, has not been appeared in the document yet.
+var mySecondElement = g.CreateElement("div.epicElement"); // Single div element with a classname, has not been appeared in the document yet.
+var myThirdElement = g.CreateElement("div#amazingElement"); // Single div element with a ID, has not been appeared in the document yet.
+
+
+...
+
+Using these variables the console will return the element. 
+You can always use default functions to put the elements in the document. 
+
+
+(YOU CAN USE ANY OTHER ELEMENT YOU WANT, NOT ONLY THE DIV ELEMENT. :) )
+
+
+EXAMPLE 2:
+
+(js)
+
+var myFirstElement = g.CreateElement("div", "<body>"); // Create a div element in the body element.
+var mySecondElement = g.CreateElement("div.myDivElement", ".parentElement"); // Create a div in a element with 'parentElement' as classname.
+var myThirdElement = g.CreateElement("div#myDivElement", ".divChild in .divParent"); // Create a element in the element with 'divChild' as classname. See g.Selector for more information.
+
+...
+
+The second argument works the same as the g.Selector function.
+
+
+EXAMPLE 3:
+
+var myFirstElement = g.CreateElement("div", "<body>").On(event, function); // Adds a event listener on the element that has been created.
+var mySecondElement = g.CreateElement("div", "<body>").Text(value); // Sets a text in the element that has been created. Leave the argument empty or undefine it to RETURN the text content of the element.
+var myThirdElement = g.CreateElement("div", "<body>").Style({
+	// Style properties here.
+}); // Gives the element a epic style :).
+

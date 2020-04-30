@@ -1,0 +1,100 @@
+g.ScrollListener(target, type, function);
+
+- - - - - - - -
+
+Okay this one is really epic. So basically, this function handle scroll events. 
+It can detect the direction where the user is scrolling, and it can trigger when the
+user has scrolled. 
+This function needs 3 arguments
+	- target (object)
+	- type (string)
+	- function (function)
+
+
+-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+
+DIRECTION:
+
+I will start with the direction. As I said in the intro, it can detect where
+the user is scrolling. While scrolling, the function in the third argument will be called
+with a object called 'dir'. That object has 2 properties, top and bottom.
+If the user is scrolling to the TOP, the TOP property will be TRUE and the BOTTOM propery will be FALSE.
+And if the user is scrolling to the BOTTOM, the TOP property will be FALSE and the BOTTOM property will be TRUE.
+Dir stands for direction by the way.
+
+- - - - - - - - 
+
+EXAMPLE 1:
+
+(js)
+
+g.ScrollListener(window, "direction", function() {
+	console.log(dir); // The dir object.
+	console.log(dir.top); // The top property.
+	console.log(dir.bottom); The bottom property.
+});
+
+
+- - - - - - - - 
+
+EXAMPLE 2:
+
+(js)
+
+g.ScrollListener(window, "direction", function() {
+	if(dir.top) {
+		// If the top property equals to true.
+		console.log("Yay, I am going upwards!");
+	}
+	if(dir.bottom) {
+		console.log("Oof! I am going downwards!");
+	}
+});
+
+
+-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+TRIGGER:
+
+Now the trigger type. This one is easy to understand.
+Basically, it will return a variable (boolean) called 'triggered' when the user has scrolled a amount of pixels.
+Sounds a bit weird, but you will understand it in the examples below!. 
+
+
+- - - - - - - - 
+
+EXAMPLE 1:
+
+(js)
+
+g.ScrollListener(window, "trigger=100", function() { 
+	console.log(triggered);
+
+	// If the user is scrolling less than 100 pixels, the triggered variable will be false.
+	// If the user is scrolling more than 100 pixels, the triggered variable will be true.
+})
+
+
+- - - - - - - - 
+
+
+EXAMPLE 2:
+
+g.ScrollListener(window, "trigger=100", function() {
+	if(triggered) {
+		// The user has scrolled more than 100 pixels
+	}
+	if(!triggered) {
+		// The user has scrolled less than 100 pixels.
+	}
+});
+
+
+-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+If the information isn't clear enough, feel free to contact me OR see the examples!
+Replace the 100 and 'window' to whatever you want!
+This function has 2 types, but I will add more! 
+
+Yay 100 lines of a documentation file :)
