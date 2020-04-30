@@ -1,8 +1,11 @@
 (function (a) {
     /*
- * g.js
- * 
- * Rohan Kahaisingh
+ * g.js Copyright 2019-2020 ©.
+ *  
+ * - - - - - - - - 
+ *
+ * Made by Rohan Kanhaisingh.
+ * Check out https://github.com/rohankanhaisingh
  */
     var a, b, c, d, e, f;
     a = window || document.window;
