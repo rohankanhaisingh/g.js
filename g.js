@@ -484,6 +484,85 @@
                 var r, t, u, v, w, x;
                 return r;
             }
+        },
+        JSON: function (filepath, callback) {
+            var filepath, callback, a, b, c, d, e, f;
+            b = filepath.split(".");
+            if (b[b.length - 1] == 'json') {
+                a = new XMLHttpRequest();
+                a.addEventListener("readystatechange", function () {
+                    if (this.readyState == 4) {
+                        if (this.status == 200 || this.status == 0) {
+                            d = this.responseText;
+                            if (typeof callback !== 'undefined') {
+                                callback(response = {
+                                    parse: JSON.parse(this.responseText),
+                                    string: JSON.stringify(this.responseText)
+                                });
+                            }
+                        } else {
+                            console.error("Failed to load " + filepath);
+                            console.error("Request responded with status: " + this.status);
+                        }
+                    }
+                });
+                a.open("GET", filepath, true);
+                a.send(null);
+            }
+        },
+        ScrollListener: function (target, type, callback) {
+            var target, a, b, c, d, e, callback, type;
+            if (typeof target !== 'undefined') {
+                if (typeof target == 'object') {
+                    if (target !== null) {
+                        if (typeof type !== 'undefined') {
+                            if (type == 'direction') {
+                                var a = window.pageYOffset;
+                                target.addEventListener("scroll", function (event) {
+                                    var b = window.pageYOffset;
+                                    if (a > b) {
+                                        if (typeof callback == 'function') {
+                                            callback(dir = {
+                                                top: true,
+                                                bottom: false
+                                            });
+                                        }
+                                    } else {
+                                        if (typeof callback == 'function') {
+                                            callback(dir = {
+                                                top: false,
+                                                bottom: true
+                                            });
+                                        }
+                                    }
+                                    a = b;
+                                });
+                            }
+                            if (type.substring(0, 7) == 'trigger') {
+                                a = type.substring(8);
+                                b = parseFloat(a) || parseInt(a);
+                                if (typeof b !== 'undefined' && b !== NaN) {
+                                    target.addEventListener("scroll", function (event) {
+                                        c = target.scrollTop || target.pageYOffset;
+                                        if (c > b) {
+                                            if (typeof callback == 'function') {
+                                                callback(triggered = true)
+                                            }
+                                        }
+                                        if (c < b) {
+                                            if (typeof callback == 'function') {
+                                                callback(triggered = false);
+                                            }
+                                        }
+                                    });
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    console.error("The first argument has to be a object!");
+                }
+            }
         }
     };
     a.Colors = {
