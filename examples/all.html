@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="../g.min.js"></script>
+    <style>
+        body, html {
+            font-family: sans-serif;
+            font-weight: 100;
+        }
+        .group {
+            width: auto;
+            height: auto;
+            border: 1px solid #585858;
+            padding: 10px;
+            display: table;
+            margin: 40px 0px;
+        }
+
+        .group i, b {
+            display: block;
+        }
+        .group button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div>NOTE: Use the console for this example! Press CTRL + SHIFT + I to open the console, or press F12 to open the console.</div>
+
+    <div class="group">
+        <p>Paragraph 1</p>
+        <p>Paragraph 2</p>
+        <p>Paragraph 3</p>
+        <p>Paragraph 4</p>
+        <button onclick="console.log(g.All('<p>'))">See all the paragraph elements in the console</button>
+    </div>
+    <div class="group">
+        <i class="text">Italic element with 'text' as classname</i>
+        <i class="text">Italic element with 'text' as classname</i>
+        <i class="text">Italic element with 'text' as classname</i>
+        <i class="text">Italic element with 'text' as classname</i>
+        <button onclick="console.log(g.All('.text'))">See all the elements with 'text' ass classname in the console</button>
+    </div>
+    <div class="group">
+        <b id="text">Bold element with 'text' as ID.</b>
+        <b id="text">Bold element with 'text' as ID.</b>
+        <b id="text">Bold element with 'text' as ID.</b>
+        <b id="text">Bold element with 'text' as ID.</b>
+        <button onclick="console.log(g.All('#text'))">See all the elements with 'text' as ID in the console</button>
+    </div>
+    <hr />
+    <div class="group">
+        <p class="plain-text">Plain text</p>
+        <p class="plain-text">Plain text</p>
+        <p class="plain-text">Plain text</p>
+        <p class="plain-text">Plain text</p>
+        <button onclick="g.All('.plain-text').Css('color', 'magenta')">Click to give the plain texts a epic color.</button>
+    </div>
+    <div class="group">
+        <p class="text-random">Random text #1</p>
+        <p class="text-random">Random text #2</p>
+        <p class="text-random">Random text #3</p>
+        <p class="text-random">Random text #4</p>
+        <button onclick="random_color()">Give a random element with 'text-random' a epic color</button>
+        <script>
+            function random_color() {
+                var a = g.All('.text-random').Random();
+                a.style.color = 'magenta';
+                setTimeout(function () {
+                    a.removeAttribute("style");
+                }, 500);
+            }
+        </script>
+    </div>
+</body>
+</html>

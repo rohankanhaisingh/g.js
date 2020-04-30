@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>g.Selector</title>
+    <script src="../g.min.js"></script>
+    <style>
+        body, html {
+            font-family: sans-serif;
+            font-weight: 100;
+        }
+
+        .group {
+            width: auto;
+            height: auto;
+            border: 1px solid #585858;
+            padding: 10px;
+            display: table;
+            margin: 40px 0px;
+        }
+
+            .group i, b {
+                display: block;
+            }
+
+            .group button {
+                margin-top: 20px;
+            }
+            .group code {
+                width: auto;
+                height: auto;
+                background: #1d1d1d;
+                padding: 5px 2px;
+                border-radius: 5px;
+                color: #e3e3e3;
+                display: block;
+                margin-bottom: 6px;
+            }
+
+
+        .red-box {
+            width: 50px;
+            height: 50px;
+            position: relative;
+            background: red;
+        }
+        .blue-box {
+            background: blue;
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            z-index: 1;
+        }
+        #red-box {
+            width: 50px;
+            height: 50px;
+            position: relative;
+            background: red;
+        }
+
+        #blue-box {
+            background: blue;
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            z-index: 1;
+        }
+        dupo_box {
+            width: 50px;
+            height: 50px;
+            position: relative;
+            background: red;
+            display: block;
+        }
+
+        dupo_child_box {
+            background: blue;
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div>NOTE: Use the console for this example! Press CTRL + SHIFT + I to open the console, or press F12 to open the console.</div>
+    <div class="group">
+        <p>Hey look, I am a paragraph</p>
+        <code>g.Selector("&#60;p&#62;")</code>
+        <button onclick="console.log(g.Selector('<p>'))">Reveal this element in the console</button>
+    </div>
+    <div class="group">
+        <p class="epic-text">My classname is 'epic-text'</p>
+        <code>g.Selector(".epic-text")</code>
+        <button onclick="console.log(g.Selector('.epic-text'))">Reveal this element in the console</button>
+    </div>
+    <div class="group">
+        <p id="epic-id">My ID is 'epic-id'</p>
+        <code>g.Selector("#epic-id")</code>
+        <button onclick="console.log(g.Selector('#epic-id'))">Reveal this element in the console</button>
+    </div>
+    <hr />
+    <div class="group">
+        <div class="red-box">
+            <div class="blue-box"></div>
+        </div>
+        <p>The red box has a 'red-box' as classname, the blue box has 'blue-box' as classname.</p>
+        <p>Click the button to reveal the blue box inside the red box, in the console.</p>
+        <code>g.Selector(".blue-box in .red-box")</code>
+        <button onclick='console.log(g.Selector(".blue-box in .red-box"))'>Reveal this element in the console</button>
+    </div>
+    <div class="group">
+        <div id="red-box">
+            <div id="blue-box"></div>
+        </div>
+        <p>The child selector doesn't work for ID's yet, but here are the boxes anyway.</p>
+        <p>But it should look like this:</p>
+        <code>g.Selector("#blue-box in #red-box")</code>
+    </div>
+    <div class="group">
+        <dupo_box>
+            <dupo_child_box></dupo_child_box>
+        </dupo_box>
+        <p>The red box has 'dupo_box' as element name, the blue box has 'dupo_child_box' as element name.</p>
+        <p>Click the button to reveal the blue box inside the red box, in the console.</p>
+        <code>g.Selector("&#60;dupo_child_box&#62; in &#60;dupo_box&#62;")</code>
+        <button onclick='console.log(g.Selector("<dupo_child_box> in <dupo_box>"))'>Reveal this element in the console</button>
+    </div>
+    <div class="group">
+        <p>It works in many ways:</p>
+        <code>g.Selector(".myChild in .myParent")</code>
+        <code>g.Selector(".myChild in &#60;div&#62;")</code>
+        <code>g.Selector("&#60;div&#62; in .myParent")</code>
+        <code>g.Selector("&#60;div&#62; in &#60;header&#62;")</code>
+    </div>
+    <hr />
+    <div class="group">
+        <div class="red-box click-sayhi"></div>
+        <p>Event listeners on elements.</p>
+        <code>g.Selector(".click-sayhi").On("click", myFunction1);</code>
+        <script>
+            function myFunction1() {
+                alert("Hey there!");
+            }
+            g.Selector(".click-sayhi").On("click", myFunction1);
+        </script>
+    </div>
+    <div class="group">
+        <div class="red-box new-box"></div>
+        <p>Style attributes on elements.</p>
+        <code>g.Selector(".new-box").Css("background", "green");</code>
+        <button onclick="g.Selector('.new-box').Css('background', 'green')">Click to make the box green</button>
+    </div>
+    <div class="group">
+        <p>And there are other functions as well! Check out the documentary for more information.</p>
+    </div>
+</body>
+</html>

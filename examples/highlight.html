@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>g.Highlight</title>
+    <script src="../g.min.js"></script>
+    <link href="../g.css" rel="stylesheet"/>
+</head>
+<body>
+    <div>NOTE: Use the console for this example! Press CTRL + SHIFT + I to open the console, or press F12 to open the console.</div>
+    <p>NOTE: This functions needs at least the g.css stylesheet</p>
+    <p class="highlight">Click the button to highlight me!</p>
+    <button onclick="myFunction()">Press me :)</button>
+    <script>
+        function myFunction() {
+            g.Highlight(".highlight", true, 2000);
+        }
+    </script>
+</body>
+</html>

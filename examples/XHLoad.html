@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>g.XHLoad</title>
+    <script src="../g.min.js"></script>
+    <style>
+        body, html {
+            font-family: sans-serif;
+            font-weight: 100;
+        }
+
+        .group {
+            width: auto;
+            height: auto;
+            border: 1px solid #585858;
+            padding: 10px;
+            display: table;
+            margin: 40px 0px;
+        }
+
+            .group i, b {
+                display: block;
+            }
+
+            .group button {
+                margin-top: 20px;
+            }
+
+            .group code {
+                width: auto;
+                height: auto;
+                background: #1d1d1d;
+                padding: 3px 2px;
+                color: #e3e3e3;
+                display: block;
+            }
+            .js-object {
+                color: #e43838;
+            }
+            .js-g {
+                color: #ed00ff;
+                font-weight: bold;
+            }
+        .js-gfunction {
+            color: #ed00ff;
+        }
+        .js-property {
+            color: #f79a28;
+        }
+    </style>
+</head>
+<body>
+    <div>NOTE: Use the console for this example! Press CTRL + SHIFT + I to open the console, or press F12 to open the console.</div>
+    <div class="group">
+        <p>Open the test file and reveal the response object in the console.</p>
+        <code><span class="js-g">g</span>.<span class="js-gfunction">XHLoad</span>("test.txt", function() {</code>
+        <code>&emsp;&emsp;&emsp;&emsp;console.log(<span class="js-object">response</span>);</code>
+        <code>}</code>
+        <script>
+            function xhload_ex1() {
+                g.XHLoad("test.txt", function () {
+                    console.log(response);
+                });
+            }
+        </script>
+        <button onclick="xhload_ex1()">Click to run the code and reveal it in the console</button>
+    </div>
+    <div class="group">
+        <p>Open the test file and reveal the text in the console.</p>
+        <code><span class="js-g">g</span>.<span class="js-gfunction">XHLoad</span>("test.txt", function() {</code>
+        <code>&emsp;&emsp;&emsp;&emsp;console.log(<span class="js-object">response</span>.<span class="js-property">text</span>);</code>
+        <code>}</code>
+        <script>
+            function xhload_ex2() {
+                g.XHLoad("test.txt", function () {
+                    console.log(response.text);
+                });
+            }
+        </script>
+        <button onclick="xhload_ex2()">Click to run the code and reveal it in the console</button>
+    </div>
+    <div class="group">
+        <p>Open the test file and reveal the status-code in the console.</p>
+        <code><span class="js-g">g</span>.<span class="js-gfunction">XHLoad</span>("test.txt", function() {</code>
+        <code>&emsp;&emsp;&emsp;&emsp;console.log(<span class="js-object">response</span>.<span class="js-property">code</span>);</code>
+        <code>}</code>
+        <script>
+            function xhload_ex3() {
+                g.XHLoad("test.txt", function () {
+                    console.log(response.code);
+                });
+            }
+        </script>
+        <button onclick="xhload_ex3()">Click to run the code and reveal it in the console</button>
+    </div>
+    <div class="group">
+        <p>Open the test file and reveal the main XMLHttpRequest object in the console.</p>
+        <code><span class="js-g">g</span>.<span class="js-gfunction">XHLoad</span>("test.txt", function() {</code>
+        <code>&emsp;&emsp;&emsp;&emsp;console.log(<span class="js-object">response</span>.<span class="js-property">main</span>);</code>
+        <code>}</code>
+        <script>
+            function xhload_ex4() {
+                g.XHLoad("test.txt", function () {
+                    console.log(response.main);
+                });
+            }
+        </script>
+        <button onclick="xhload_ex4()">Click to run the code and reveal it in the console</button>
+    </div>
+</body>
+</html>
