@@ -2,6 +2,10 @@
     --bg-dark: #1d1d1d;
 }
 
+@font-face {
+    src: url(https://quentiumbot.alwaysdata.net/servers/data/fonts/Roboto-Light.ttf);
+    font-family: Roboto;
+}
 
 html, body {
     margin: 0;
@@ -368,24 +372,29 @@ g-syntax-highlighter-syntax-javascript-class {
     background: #353535;
     box-shadow: -1px 1px 11px 6px #272727;
     padding: 20px;
-    -moz-animation: g-dialog-fadein 0.3s ease;
-    -o-animation: g-dialog-fadein 0.3s ease;
-    -webkit-animation: g-dialog-fadein 0.3s ease;
-    animation: g-dialog-fadein 0.3s ease;
+    -moz-animation: g-dialog-fadein 0.2s ease;
+    -o-animation: g-dialog-fadein 0.2s ease;
+    -webkit-animation: g-dialog-fadein 0.2s ease;
+    animation: g-dialog-fadein 0.2s ease;
     -moz-transition: opacity 0.1s, transform 0.1s ease;
     -o-transition: opacity 0.1s, transform 0.1s ease;
     -webkit-transition: opacity 0.1s, transform 0.1s ease;
     transition: opacity 0.1s, transform 0.1s ease;
 }
 
+.g-dialog[role='alert'] {
+    min-height: 100px;
+}
+
 .g-dialog-hidden {
     transform: translateY(-10px);
     opacity: 0;
+    pointer-events: none;
 }
 
 @keyframes g-dialog-fadein {
     0% {
-        transform: translateY(-10px) rotateX(-26deg);
+        transform: translateY(-10px);
         opacity: 0;
     }
     100% {
@@ -414,6 +423,19 @@ g-syntax-highlighter-syntax-javascript-class {
     font-size: 16px;
     user-select: none;
 }
+
+.g-dialog .g-dialog-container .g-dialog-container-content {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+    word-break: break-all;
+}
+
+    .g-dialog .g-dialog-container .g-dialog-container-content span {
+        font-family: Roboto, sans-serif, Arial;
+        font-size: 12px;
+        color: #e3e3e3;
+    }
 
     .g-dialog .g-dialog-container .g-dialog-container-input-container {
         height: auto;
@@ -472,22 +494,22 @@ g-syntax-highlighter-syntax-javascript-class {
     color: #e3e3e3;
 }
 
-.g-dialog .g-dialog-container .g-dialog-container-input-container .g-dialog-container-input-container-target:focus:before {
-    top: -10px;
-    left: 20px;
-    font-size: 10px;
-}
+    .g-dialog .g-dialog-container .g-dialog-container-input-container .g-dialog-container-input-container-target:focus:before {
+        top: -7px;
+        left: 20px;
+        font-size: 10px;
+    }
 
 .g-dialog .g-dialog-container .g-dialog-container-input-container .g-dialog-container-input-container-target:not(:empty) {
     border: 1px solid #41a2ea;
     color: #e3e3e3;
 }
 
-.g-dialog .g-dialog-container .g-dialog-container-input-container .g-dialog-container-input-container-target:not(:empty):before {
-    top: -10px;
-    left: 20px;
-    font-size: 10px;
-}
+    .g-dialog .g-dialog-container .g-dialog-container-input-container .g-dialog-container-input-container-target:not(:empty):before {
+        top: -7px;
+        left: 20px;
+        font-size: 10px;
+    }
 
 .g-dialog .g-dialog-container .g-dialog-container-buttoncontainer {
     width: 100%;
@@ -564,6 +586,9 @@ body[theme='white'] .g-dialog {
         background: #fdfdfd;
         color: #000;
     }    
+    .g-dialog .g-dialog-container .g-dialog-container-content span {
+        color: #000;
+    }
 }
 
 @media screen and (max-width: 800px) {

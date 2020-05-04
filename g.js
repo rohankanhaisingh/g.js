@@ -1,10 +1,51 @@
 (function (a) {
     /*
- * g.js
- * 
- * Rohan Kanhaisingh
+ * g.js Copyright 2019-2020 ©.
+ *  
+ * - - - - - - - - 
+ *
+ * Made by Rohan Kanhaisingh.
+ * Check out https://github.com/rohankanhaisingh
  */
     var a, b, c, d, e, f;
+    var dx_lang = {
+        'nl': {
+            accept: 'OK',
+            cancel: 'Annuleren',
+            title: 'vertelt',
+            alert_title: 'meldt als volgende'
+        },
+        'en': {
+            accept: 'OK',
+            cancel: 'Cancel',
+            title: 'says',
+            alert_title: 'report as following'
+        },
+        'fr': {
+            accept: 'OK',
+            cancel: 'Annuler',
+            title: 'dit',
+            alert_title: 'signaler comme suit'
+        },
+        'es': {
+            accept: 'OK',
+            cancel: 'Cancelar',
+            title: 'dice',
+            alert_title: 'informar de la siguiente manera'
+        },
+        'de': {
+            accept: 'OK',
+            cancel: 'Abbrechen',
+            title: 'sagt',
+            alert_title: 'bericht wie folgt'
+        },
+        'sl': {
+            accept: 'OK',
+            cancel: 'zrušiť',
+            title: 'hovorí',
+            alert_title: 'Nahlásiť nasledujúcu správu'
+        }
+    };
     a = window || document.window;
     (function () {
         !function () { if (typeof window !== 'undefined') { return this; } else if (typeof window == 'undefined' && typeof document == 'undefined') throw new Error("g.js require a interactive document"); }(); window.Width = window.innerWidth; window.Height = window.innerHeight; window.onresize = () => { window.Width = window.innerWidth; window.Height = window.innerHeight; }; document.GetElement = (element, elementTarget) => { return g.Selector(element, elementTarget); };
@@ -202,7 +243,7 @@
                     }
                 }
             } else {
-                throw "Uncaught TypeError: Failed to execute 'All' on 'Document': 1 argument required, but only 0 present";
+                throw "Uncaught TypeError: Failed to execute 'All' on 'G': 1 argument required, but only 0 present";
                 return;
             }
         },
@@ -562,6 +603,177 @@
                 } else {
                     console.error("The first argument has to be a object!");
                 }
+            }
+        },
+        Prompt: function (text, callback) {
+            var a, b, c, d, e, f, text, h, i, j, k, l, m, n, o, url, newurl, lang, ems, callback;
+            function setUniqueID(l) {
+                var a, b, c, d, e, f;
+                a = 'abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                b = "";
+                for (var i = 0; i < l; i++) {
+                    c = Math.floor(Math.random() * a.length);
+                    d = a.charAt(c);
+                    b += d;
+                }
+                return b;
+            }
+            ems = [];
+            lang = navigator.language; 
+            // lang = document.getElementsByTagName("html")[0].getAttribute("lang"); if (lang == null) { lang = 'en' };
+            if (dx_lang[lang] == undefined) { lang = 'en' };
+            url = location.href.split('/');
+            if (url[0] == 'http:' || url[0] == 'https:') { newurl = url[2]; } else { newurl = location.href;}
+            var overlay = document.createElement("div");
+            overlay.className = 'g-overlay';
+            overlay.setAttribute("unique-id", setUniqueID(24));
+            overlay.setAttribute("g-role", "overlay");
+            document.body.appendChild(overlay);
+            b = document.createElement("div");
+            b.addEventListener("contextmenu", function (event) {
+                event.preventDefault();
+            });
+            b.setAttribute("unique-id", setUniqueID(12));
+            b.className = 'g-dialog';
+            c = document.createElement("div");
+            c.className = 'g-dialog-container';
+            d = document.createElement("div");
+            d.className = 'g-dialog-container-title';
+            d.innerHTML = `<span>${newurl} ${dx_lang[lang].title}</span>`;
+            c.appendChild(d);
+            b.appendChild(c);
+            overlay.appendChild(b);
+            e = document.createElement("div");
+            e.className = 'g-dialog-container-input-container';
+            c.appendChild(e);
+            if (typeof text !== 'undefined') {
+                if (typeof text == 'string') {
+                    f = document.createElement("div");
+                    f.className = 'g-dialog-container-input-container-target';
+                    f.setAttribute("contenteditable", true);
+                    f.setAttribute("spellcheck", false);
+                    f.setAttribute("data-content", text);
+                    f.addEventListener("keypress", function (event) {
+                        if (event.keyCode == 13) {
+                            event.preventDefault();
+                            be();
+                        }
+                    });
+                    e.appendChild(f);
+                    ems.push(f);
+                }
+                if (typeof text == 'object') {
+                    for (var i = 0; i < text.length; i++) {
+                        f = document.createElement("div");
+                        f.className = 'g-dialog-container-input-container-target';
+                        f.setAttribute("contenteditable", true);
+                        f.setAttribute("spellcheck", false);
+                        f.setAttribute("data-content", text[i]);
+                        f.setAttribute("unique-id", setUniqueID(18));
+                        f.addEventListener("keypress", function (event) {
+                            if (event.keyCode == 13) {
+                                event.preventDefault();
+                            }
+                        });
+                        e.appendChild(f);
+                        ems.push(f);
+                    }
+                }
+            }
+            h = document.createElement("div");
+            h.className = 'g-dialog-container-buttoncontainer';
+            c.appendChild(h);
+            var button_cancel = document.createElement("div");
+            button_cancel.className = 'g-dialog-container-buttoncontainer-button button-cancel';
+            button_cancel.innerHTML = `<span>${dx_lang[lang].cancel}</span>`;
+            button_cancel.onclick = function () {
+                b.classList.add("g-dialog-hidden");
+                setTimeout(function () {
+                    b.remove();
+                    overlay.remove();
+                    delete this;
+                }, 400);
+            }
+            window.addEventListener("keydown", function (event) {
+                if (event.keyCode == 27) {
+                    b.classList.add("g-dialog-hidden");
+                    setTimeout(function () {
+                        b.remove();
+                        overlay.remove();
+                        delete this;
+                        window.removeEventListener("keydown", KeyboardEvent);
+                    }, 400);
+                }
+            });
+            h.appendChild(button_cancel);
+            var button_accept = document.createElement("div");
+            button_accept.className = 'g-dialog-container-buttoncontainer-button button-accept';
+            button_accept.innerHTML = `<span>${dx_lang[lang].accept}</span>`;
+            button_accept.onclick = be;
+            h.appendChild(button_accept);
+            function be() {
+                var ew = [];
+                if (ems.length > 1) {
+                    for (var i = 0; i < ems.length; i++) {
+                        ew.push(ems[i].innerText);
+                    }
+                }
+                if (ems.length == 1) {
+                    ew = ems[0].innerText;
+                }
+                if (typeof callback !== 'undefined') {
+                    if (typeof callback == 'function') {
+                        callback(result = ew);
+                    }
+                }
+                b.classList.add("g-dialog-hidden");
+                setTimeout(function () {
+                    b.remove();
+                    overlay.remove();
+                    delete this;
+                }, 400);
+            }
+        },
+        Alert(text) {
+            var a, b, c, d, e, f, text, ems, h;
+            function setUniqueID(l) {
+                var a, b, c, d, e, f;
+                a = 'abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                b = "";
+                for (var i = 0; i < l; i++) {
+                    c = Math.floor(Math.random() * a.length);
+                    d = a.charAt(c);
+                    b += d;
+                }
+                return b;
+            }
+            lang = navigator.language;
+            if (dx_lang[lang] == undefined) { lang = 'en' };
+            url = location.href.split('/');
+            if (url[0] == 'http:' || url[0] == 'https:') { newurl = url[2]; } else { newurl = location.href; }
+            a = document.createElement("div"); a.className = 'g-overlay'; document.body.appendChild(a); a.setAttribute("unique-id", setUniqueID(12));
+            b = document.createElement("div"); b.className = 'g-dialog'; b.setAttribute('role', 'alert'); b.setAttribute("unique-id", setUniqueID(22)); a.appendChild(b);
+            c = document.createElement("div"); c.className = 'g-dialog-container'; b.appendChild(c);
+            d = document.createElement("div"); d.className = 'g-dialog-container-title'; 
+            d.innerHTML = `<span>${newurl} ${dx_lang[lang].alert_title}</span>`;
+            c.appendChild(d);
+            e = document.createElement("div");
+            e.className = 'g-dialog-container-content';
+            e.innerHTML = `<span>${text}</span>`;
+            c.appendChild(e);
+            f = document.createElement("div"); f.className = 'g-dialog-container-buttoncontainer'; c.appendChild(f);
+            h = document.createElement("div"); h.className = 'g-dialog-container-buttoncontainer-button button-accept'; 
+            h.innerHTML = `<span>${dx_lang[lang].accept}</span>`;
+            h.onclick = be;
+            f.appendChild(h);
+
+            function be() {
+                b.classList.add("g-dialog-hidden");
+                setTimeout(function () {
+                    b.remove();
+                    a.remove();
+                    delete this;
+                }, 400);
             }
         }
     };
